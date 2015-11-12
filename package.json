@@ -3,9 +3,12 @@
   "version": "6.1.4",
   "description": "Babel preset for Node 5.x (ES6, React, Flow)",
   "repository": "git://github.com/leebenson/babel-preset-node5.git",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint lib/ test/ && mocha test/index.js"
   },
   "keywords": [
     "babel-preset-node5",
@@ -27,5 +30,13 @@
     "babel-plugin-transform-strict-mode": "^6.1.4",
     "babel-polyfill": "^6.1.4",
     "babel-preset-react": "^6.1.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.1.4",
+    "babel-eslint": "^4.1.3",
+    "chai": "^3.4.0",
+    "eslint": "^1.7.3",
+    "eslint-config-airbnb": "^1.0.0",
+    "mocha": "^2.3.3"
   }
 }
