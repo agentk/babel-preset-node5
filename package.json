@@ -8,7 +8,9 @@
     "lib"
   ],
   "scripts": {
-    "test": "eslint lib/ test/ && mocha test/index.js"
+    "test": "npm run test:eslint && npm run test:mocha",
+    "test:eslint": "eslint lib/ test/",
+    "test:mocha": "mocha test/index.js"
   },
   "keywords": [
     "babel-preset-node5",
