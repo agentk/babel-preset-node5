@@ -34,4 +34,36 @@ describe('babel-preset-node5', () => {
       expect(c).to.eql([3, 4]);
     });
   });
+
+  describe('destructuring assignment', () => {
+    // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+
+    it('swapping variables', () => {
+      // After executing this code, b is 1 and a is 3. Without destructuring assignment, swapping two values requires a temporary variable (or, in some low-level languages, the XOR-swap trick).
+      let a = 1;
+      let b = 3;
+
+      [a, b] = [b, a];
+      return expect([a, b]).to.eql([3, 1]);
+    });
+  });
+
+  describe('default parameters', () => {
+    it('supports default parameters', () => {
+      function myFunction(a = 'a', b = 'b', c = 'c') {
+        return [a, b, c];
+      }
+      expect(myFunction(undefined, 2)).to.eql(['a', 2, 'c']);
+      expect(myFunction()).to.eql(['a', 'b', 'c']);
+    });
+
+    it('supports function argument defaults', () => {
+      // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Function_argument_defaults#Function_argument_defaults
+      function drawES6Chart({ size: size = 'big', cords: cords = { x: 0, y: 0 }, radius: radius = 25 } = {}) {
+        return { size, cords, radius };
+      }
+      const result = drawES6Chart({ cords: { x: 18, y: 30 }, radius: 30 });
+      expect(result).to.have.deep.property('cords.x', 18);
+    });
+  });
 });

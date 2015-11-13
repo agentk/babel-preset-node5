@@ -8,7 +8,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "npm run test:eslint && npm run test:mocha",
+    "test": "eslint lib/ test/ && mocha test/index.js",
     "test:eslint": "eslint lib/ test/",
     "test:mocha": "mocha test/index.js"
   },
